@@ -18,9 +18,16 @@ namespace ConfigurationNet5.Sample
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+            //This is how you attach additional JSON files
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                config.AddJsonFile("FileSettings.json", optional: false, reloadOnChange: false);
+            })
+            .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    //.ConfigureAppConfiguration(c =>
+                    //    c.AddJsonFile("FileSettings.json")); //Another way to add read config
                 });
     }
 }

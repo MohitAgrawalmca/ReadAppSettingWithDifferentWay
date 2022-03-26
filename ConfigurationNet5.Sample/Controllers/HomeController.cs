@@ -24,10 +24,9 @@ namespace ConfigurationNet5.Sample.Controllers
             string config4 =  configuration["Settings:Config4"];
 
             // Type3
-            string Version = configuration.GetSection("Version").Value;
+            string Version = configuration.GetSection("Version").Value; //Read value from FileSettings
             // Type4
-            Version = configuration.GetValue<string>("Version");
-
+            Version = configuration.GetValue<string>("Version");  //Read value from FileSettings
             // Type5
             config4 = configuration.GetSection("Settings").GetSection("Config4").Value;
 
